@@ -106,8 +106,8 @@
 <style>
   @import 'css/variable.css';
   .header{
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
     background-color: rgba(0, 0, 0, 0.8);
   }
@@ -131,13 +131,14 @@
       & > li {
         & a {
           color: var(--color-primary);
+          font-size: 13px;
           &:hover {
             color: color(var(--color-primary) shade(20%))
           }
         }
         & > i.el-icon-arrow-down{
-          top: 24px;
-          right: 2px;
+          top: 20px;
+          right: 10px;
         }
         & > ul{
           position: absolute;
@@ -163,7 +164,7 @@
         &:hover > ul{
           opacity: 1;
           visibility: visible;
-          transform: translateY(2px);
+          transform: translateY(4px);
         }
         &:hover i.el-icon-arrow-down{
           transform: rotateZ(180deg);
@@ -173,7 +174,7 @@
     .top-bar{
       & > li {
         & > a{
-          padding: 23px 1rem;
+          padding: 18px 1.6rem;
         } 
       }
     }

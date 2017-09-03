@@ -102,6 +102,12 @@
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+        & .swiper-pagination-bullet {
+            width: 36px;
+            height: 2px;
+            border-radius: 2px;
+            transition: background .3s;
+        }
     }
     .swiper-slide {
         text-align: center;
@@ -129,10 +135,10 @@
     .banner-swiper {
       & .swiper-button-prev, & .swiper-button-next{
         background-color: rgba(0,0,0, .3);
-        width:4rem;
-        height:4rem;
+        width:2.6rem;
+        height:2.6rem;
         border-radius: 50%;
-        background-size: 1rem;
+        background-size: 0.8rem;
       }
     }
     .product-culture{
@@ -194,8 +200,8 @@
     	.banner-swiper {
         & .swiper-button-prev, & .swiper-button-next{
           opacity: 1;
-          width:2.4rem;
-          height:2.4rem;
+          width:2.2rem;
+          height:2.2rem;
         }
       }
       .product-culture {
