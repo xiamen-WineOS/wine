@@ -562,7 +562,7 @@ blockquote {
     z-index: 1;
 }
 .inner-content{
-  padding: 30px 30px 0;
+  padding: 30px;
 }
 @media only screen and (max-width: 768px) {
 	.des-title{
@@ -585,4 +585,7 @@ blockquote {
 	.inner-content{
 	  padding: 0;
 	}
+}
+.section-bg {
+  background: #f1f1f1;
 }

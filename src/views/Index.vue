@@ -19,39 +19,78 @@
         <news></news>
       </div>
     </div>
-    <div class="row margin-t small-no-margin">
-      <div class="large-24 columns">
-        <h2 class="des-title">
-            <span>产品文化</span>
-        </h2>
-        <div class="row inner-content">
-          <div class="large-12 medium-12 columns">
-            <swiper :options="swiperOption" ref="mySwiper" class="product-swiper">
-              <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
-                <a>
-                  <img :src="slide.url" alt="" class="swiper-lazy">
-                  <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-                </a>
-              </swiper-slide>
-              <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
-              <div class="swiper-button-prev swiper-button-white" slot="button-prev"><a></a></div>
-              <div class="swiper-button-next swiper-button-white" slot="button-next"><a></a></div>
-            </swiper>
-          </div>
-          <div class="large-12 medium-12 columns">
-            <div class="product-culture">
-              <ul>
-                <li><a>酿酒人有君子之风： 勤劳、淳朴、仁义、包容。</a></li>
-                <li><a>产品是酒中君子： 表里金玉，惠而不费。</a></li>
-                <li><a>卖酒人有君子之德： 诚信、自律、服务。</a></li>
-                <li><a>饮酒人有君子之好：文明、尊贵、典雅、谦和。</a></li>
-                <li><a>君品习酒，极具君子品德之酒，内外兼修，和而不同。</a></li>
-              </ul>
+    <div class="section-bg">
+      <div class="row margin-t small-no-margin">
+        <div class="large-24 columns">
+          <h2 class="des-title">
+              <span style="background: #f1f1f1;">产品文化</span>
+          </h2>
+          <div class="row inner-content margin-b">
+            <div class="large-12 medium-12 columns">
+              <swiper :options="swiperOption" ref="mySwiper" class="product-swiper">
+                <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
+                  <a>
+                    <img :src="slide.url" alt="" class="swiper-lazy">
+                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                  </a>
+                </swiper-slide>
+                <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
+                <div class="swiper-button-prev swiper-button-white" slot="button-prev"><a></a></div>
+                <div class="swiper-button-next swiper-button-white" slot="button-next"><a></a></div>
+              </swiper>
+            </div>
+            <div class="large-12 medium-12 columns">
+              <div class="product-culture">
+                <ul>
+                  <li><a>酿酒人有君子之风： 勤劳、淳朴、仁义、包容。</a></li>
+                  <li><a>产品是酒中君子： 表里金玉，惠而不费。</a></li>
+                  <li><a>卖酒人有君子之德： 诚信、自律、服务。</a></li>
+                  <li><a>饮酒人有君子之好：文明、尊贵、典雅、谦和。</a></li>
+                  <li><a>君品习酒，极具君子品德之酒，内外兼修，和而不同。</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="row margin-t small-no-margin">
+        <div class="large-24 columns">
+          <h2 class="des-title">
+            <span>产品展示</span>
+          </h2>
+          <div class="row">
+            <div class="column large-12 small-24">
+              <div class="wine-desc">
+                <div class="subsection-headline">贵州习酒简单的描述</div>
+                <a href="">查看详情</a>
+              </div>
+            </div>
+            <div class="column large-12 small-24">
+              <figure class="one-third left zoom-effect">
+                <div class="aspectRatioPlaceholder" >
+                  <img class="img" data-width="475" data-height="360" src="../../static/img/jiu.jpg">
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column large-12 large-push-12 small-24 small-push-0">
+              <div class="wine-desc">
+                <div class="subsection-headline">贵州习酒简单的描述</div>
+                <a href="">查看详情</a>
+              </div>
+            </div>
+            <div class="column large-12 large-pull-12 small-24 small-pull-0">
+              <figure class="one-third left zoom-effect">
+                <div class="aspectRatioPlaceholder" >
+                  <img class="img" data-width="475" data-height="360" src="../../static/img/jiu2.jpg">
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 <script>
@@ -180,6 +219,23 @@
         background-size: 14px;
       }
     }
+    .wine-desc{
+      max-width: 320px;
+      margin: 0 auto;
+      margin-top: 200px;
+    }
+    .subsection-headline {
+      font-size: 24px;
+      line-height: 1.125;
+      font-weight: 300;
+      letter-spacing: 0em;
+      & + a{
+        margin-top: 10px;
+        font-size: 12px;
+        display: inline-block;
+        color: var(--color-primary);
+      }
+    }
     @media only screen and (max-width: 768px) {
     	.product-culture{
     	  height: auto;
@@ -190,6 +246,19 @@
       }
       .product-swiper{
         width: 100%;
+      }
+      .wine-desc{
+        text-align: center;
+        max-width: 220px;
+        margin-top: 1rem;
+      }
+      .subsection-headline {
+        & + a{
+          margin-top: 1rem;
+          font-size: 12px;
+          display: inline-block;
+          color: var(--color-primary);
+        }
       }
     }
     @media only screen and (max-width: 640px) {
