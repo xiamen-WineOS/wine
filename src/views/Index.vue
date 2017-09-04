@@ -130,6 +130,8 @@
         return this.$refs.mySwiper.swiper
       }
     },
+    mounted () {
+    },
     components: {
       News
     }

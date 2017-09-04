@@ -131,7 +131,7 @@
       & > li {
         & a {
           color: var(--color-primary);
-          font-size: 13px;
+          font-size: 14px;
           &:hover {
             color: color(var(--color-primary) shade(20%))
           }
