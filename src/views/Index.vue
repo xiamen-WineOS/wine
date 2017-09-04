@@ -97,7 +97,7 @@
   require('@/assets/css/swiper.min.css')
   import '@/utils/scrollreveal.js'
   import News from './index/News'
-  import screenwidth from '@/utils/screenWidth.js'
+  import { screenwidth } from '@/utils/screenWidth.js'
   export default {
     data () {
       return {
@@ -141,53 +141,55 @@
       window.sr = new ScrollReveal()
     },
     mounted () {
-      console.log(screenwidth)
-      var title = {
-        origin   : "top",
-        distance : "32px",
-        duration : 1500,
+      var flag = screenwidth()
+      if (!flag) {
+        var title = {
+          origin   : "top",
+          distance : "32px",
+          duration : 1500,
+        }
+        var news = {
+          origin   : "top",
+          distance : "32px",
+          duration : 1500,
+          scale    : 1.05,
+        }
+        var culture = {
+          origin   : "left",
+          distance : "24px",
+          duration : 600,
+          delay    : 300,
+          scale    : 0,
+        }
+        var culturer = {
+          origin   : "right",
+          distance : "36px",
+          duration : 600,
+          delay    : 1000,
+          scale    : 0,
+        }
+        var pl = {
+          origin   : "left",
+          distance : "100px",
+          duration : 600,
+          delay    : 1000,
+        }
+        var pr = {
+          origin   : "right",
+          distance : "100px",
+          duration : 600,
+          delay    : 1000,
+        }
+        sr.reveal('.des-title', title)
+        sr.reveal(".news-row", news)
+        sr.reveal(".culture-l", culture)
+        sr.reveal(".product-culture", culturer)
+        
+        sr.reveal('.pl', pl)
+        sr.reveal('.pr', pr)
+        sr.reveal('.pl', pl)
+        sr.reveal('.pr', pr)
       }
-      var news = {
-        origin   : "top",
-        distance : "32px",
-        duration : 1500,
-        scale    : 1.05,
-      }
-      var culture = {
-        origin   : "left",
-        distance : "24px",
-        duration : 600,
-        delay    : 300,
-        scale    : 0,
-      }
-      var culturer = {
-        origin   : "right",
-        distance : "36px",
-        duration : 600,
-        delay    : 1000,
-        scale    : 0,
-      }
-      var pl = {
-        origin   : "left",
-        distance : "100px",
-        duration : 600,
-        delay    : 1000,
-      }
-      var pr = {
-        origin   : "right",
-        distance : "100px",
-        duration : 600,
-        delay    : 1000,
-      }
-      sr.reveal('.des-title', title)
-      sr.reveal(".news-row", news)
-      sr.reveal(".culture-l", culture)
-      sr.reveal(".product-culture", culturer)
-      
-      sr.reveal('.pl', pl)
-      sr.reveal('.pr', pr)
-      sr.reveal('.pl', pl)
-      sr.reveal('.pr', pr)
     },
     components: {
       News

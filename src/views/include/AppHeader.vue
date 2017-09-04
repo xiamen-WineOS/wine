@@ -135,6 +135,22 @@
             color: color(var(--color-primary) shade(20%))
           }
         }
+      }
+    }
+    .top-bar{
+      & > li {
+        & > a{
+          padding: 18px 1.2rem;
+        } 
+      }
+    }
+  @media only screen and (min-width: 768px) {
+  	.top-bar{
+      & > li {
+        & > a{
+          font-size: 13px;
+          padding: 1rem 1.3rem;
+        }
         & > ul{
           position: absolute;
           width: 160px;
@@ -163,30 +179,14 @@
         }
         &:hover i.el-icon-arrow-down{
           transform: rotateZ(180deg);
-        }
-      }
-    }
-    .top-bar{
-      & > li {
-        & > a{
-          padding: 18px 1.2rem;
-        } 
-      }
-    }
-  @media only screen and (max-width: 768px) {
-    .header{
-      height: 46px;
-    }
-  	.top-bar{
-      & > li {
-        & > a{
-          font-size: 13px;
-          padding: 1rem 1.3rem;
         } 
       }
     }
   }
   @media only screen and (max-width: 767px) {
+    .header{
+      height: 46px;
+    }
     .mobile-menu {
       /*display: none;*/
       position: absolute;
