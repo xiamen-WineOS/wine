@@ -1,13 +1,13 @@
 <template>
   <header class="header">
     <div class="row">
-      <div class="large-10 medium-8 column">
+      <div class="large-10 medium-6 column">
         <div class="logo">
           <h1 style="display: none;">厦门八达</h1>
           <a title="logo"><span></span></a>
         </div>
       </div>
-      <div class="large-14 medium-16 column small-no-padding">
+      <div class="large-14 medium-18 column small-no-padding">
         <div class="mobile-menu" @click="toggleMenu" :class="{'is-open':isOpen}">
             <span class="menu-patty"></span>
             <span class="menu-patty"></span>
@@ -126,8 +126,7 @@
       }
     }
   }
-  @media only screen and (min-width: 769px) {
-    .top-bar{
+  .top-bar{
       & > li {
         & a {
           color: var(--color-primary);
@@ -135,10 +134,6 @@
           &:hover {
             color: color(var(--color-primary) shade(20%))
           }
-        }
-        & > i.el-icon-arrow-down{
-          top: 20px;
-          right: 10px;
         }
         & > ul{
           position: absolute;
@@ -174,11 +169,10 @@
     .top-bar{
       & > li {
         & > a{
-          padding: 18px 1.6rem;
+          padding: 18px 1.2rem;
         } 
       }
     }
-  }
   @media only screen and (max-width: 768px) {
     .header{
       height: 46px;
@@ -187,10 +181,12 @@
       & > li {
         & > a{
           font-size: 13px;
-          padding: 1rem 10px;
+          padding: 1rem 1.3rem;
         } 
       }
     }
+  }
+  @media only screen and (max-width: 767px) {
     .mobile-menu {
       /*display: none;*/
       position: absolute;
@@ -266,8 +262,7 @@
         }
       }
     }
-  }
-  @media only screen and (max-width: 767px) {
+    
   	.mobile-content{
   	  background: rgba(0,0,0,.9);
   	  position: absolute;

@@ -11,10 +11,10 @@
       <div class="swiper-button-prev swiper-button-white" slot="button-prev"><a></a></div>
       <div class="swiper-button-next swiper-button-white" slot="button-next"><a></a></div>
     </swiper>
-    <div class="row margin-t small-no-margin">
+    <div class="row margin-t small-no-margin news-row">
       <div class="large-24 columns">
         <h2 class="des-title">
-            <span>新闻资讯</span>
+          <span>新闻资讯</span>
         </h2>
         <news></news>
       </div>
@@ -26,7 +26,7 @@
               <span style="background: #f1f1f1;">产品文化</span>
           </h2>
           <div class="row inner-content margin-b">
-            <div class="large-12 medium-12 columns">
+            <div class="large-12 medium-12 columns  culture-l">
               <swiper :options="swiperOption" ref="mySwiper" class="product-swiper">
                 <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
                   <a>
@@ -59,30 +59,30 @@
           <h2 class="des-title">
             <span>产品展示</span>
           </h2>
-          <div class="row">
+          <div class="row scroll-effect">
             <div class="column large-12 small-24">
-              <div class="wine-desc">
+              <div class="wine-desc pl">
                 <div class="subsection-headline">贵州习酒简单的描述</div>
                 <a href="">查看详情</a>
               </div>
             </div>
             <div class="column large-12 small-24">
-              <figure class="one-third left zoom-effect">
+              <figure class="pr">
                 <div class="aspectRatioPlaceholder" >
                   <img class="img" data-width="475" data-height="360" src="../../static/img/jiu.jpg">
                 </div>
               </figure>
             </div>
           </div>
-          <div class="row">
+          <div class="row scroll-effect">
             <div class="column large-12 large-push-12 small-24 small-push-0">
-              <div class="wine-desc">
+              <div class="wine-desc pr">
                 <div class="subsection-headline">贵州习酒简单的描述</div>
                 <a href="">查看详情</a>
               </div>
             </div>
             <div class="column large-12 large-pull-12 small-24 small-pull-0">
-              <figure class="one-third left zoom-effect">
+              <figure class="pl">
                 <div class="aspectRatioPlaceholder" >
                   <img class="img" data-width="475" data-height="360" src="../../static/img/jiu2.jpg">
                 </div>
@@ -95,8 +95,9 @@
 </template>
 <script>
   require('@/assets/css/swiper.min.css')
-
+  import '@/utils/scrollreveal.js'
   import News from './index/News'
+  import screenwidth from '@/utils/screenWidth.js'
   export default {
     data () {
       return {
@@ -130,7 +131,63 @@
         return this.$refs.mySwiper.swiper
       }
     },
+    created () {
+      var config = {
+        viewFactor: 0.15,
+        duration: 800,
+        distance: "0px",
+        scale: 0.8,
+      }
+      window.sr = new ScrollReveal()
+    },
     mounted () {
+      console.log(screenwidth)
+      var title = {
+        origin   : "top",
+        distance : "32px",
+        duration : 1500,
+      }
+      var news = {
+        origin   : "top",
+        distance : "32px",
+        duration : 1500,
+        scale    : 1.05,
+      }
+      var culture = {
+        origin   : "left",
+        distance : "24px",
+        duration : 600,
+        delay    : 300,
+        scale    : 0,
+      }
+      var culturer = {
+        origin   : "right",
+        distance : "36px",
+        duration : 600,
+        delay    : 1000,
+        scale    : 0,
+      }
+      var pl = {
+        origin   : "left",
+        distance : "100px",
+        duration : 600,
+        delay    : 1000,
+      }
+      var pr = {
+        origin   : "right",
+        distance : "100px",
+        duration : 600,
+        delay    : 1000,
+      }
+      sr.reveal('.des-title', title)
+      sr.reveal(".news-row", news)
+      sr.reveal(".culture-l", culture)
+      sr.reveal(".product-culture", culturer)
+      
+      sr.reveal('.pl', pl)
+      sr.reveal('.pr', pr)
+      sr.reveal('.pl', pl)
+      sr.reveal('.pr', pr)
     },
     components: {
       News
@@ -200,7 +257,7 @@
       position:relative; 
       &:before{
         content: '';
-        width: .5px;
+        width: 1px;
         height: 100px;
         background: #ddd;
         position: absolute;
@@ -283,4 +340,8 @@
         }
       }
     }
+    /*scroll-effect*/
+   /*.scroll-effect{
+     visibility: hidden;
+   }*/
 </style>
