@@ -3,7 +3,13 @@
     <swiper :options="swiperOption" ref="mySwiper" class="banner-swiper">
       <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
         <a>
-          <img :src="slide.url" alt="" class="swiper-lazy">
+          <picture>
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source :srcset="slide.url" media="(min-width: 600px)">
+            <!--[if IE 9]></video><![endif]-->
+            <img :src="slide.smallUrl" alt="" class="swiper-lazy">
+          </picture>
+          
           <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
         </a>
       </swiper-slide>
@@ -27,8 +33,8 @@
           </h2>
           <div class="row inner-content margin-b">
             <div class="large-12 medium-12 columns  culture-l">
-              <swiper :options="swiperOption" ref="mySwiper" class="product-swiper">
-                <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
+              <swiper :options="swiperOption" ref="cultureSwiper" class="product-swiper">
+                <swiper-slide v-for="(slide, index) in cultureSlides" :key="index">
                   <a>
                     <img :src="slide.url" alt="" class="swiper-lazy">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
@@ -102,9 +108,16 @@
     data () {
       return {
         swiperSlides: [{
-          url: 'http://localhost:8080/static/img/wine.jpg',
+          url: 'http://localhost:8080/static/img/wine2.jpg',
+          smallUrl: 'http://localhost:8080/static/img/new5.jpg'
         }, {
-          url: 'http://localhost:8080/static/img/wine1.png',
+          url: 'http://localhost:8080/static/img/wine4.png',
+          smallUrl: 'http://localhost:8080/static/img/new4.jpg'
+        }],
+        cultureSlides: [{
+          url: 'http://localhost:8080/static/img/new5.jpg',
+        }, {
+          url: 'http://localhost:8080/static/img/new4.jpg'
         }],
         swiperOption: {
           pagination: '.swiper-pagination',

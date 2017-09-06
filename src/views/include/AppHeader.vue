@@ -118,38 +118,27 @@
         font-size: 10px;
         color: var(--color-primary);
         position: absolute;
-        top: 18px;
+        top: 21px;
         right: 4px;
         height: 8px;
         transition: all .3s;
         z-index: 100;
       }
-    }
-  }
-  .top-bar{
-      & > li {
-        & a {
+      & a {
           color: var(--color-primary);
           font-size: 14px;
+          padding: 18px 1.2rem;
           &:hover {
             color: color(var(--color-primary) shade(20%))
           }
         }
-      }
     }
-    .top-bar{
-      & > li {
-        & > a{
-          padding: 18px 1.2rem;
-        } 
-      }
-    }
+  }
   @media only screen and (min-width: 768px) {
   	.top-bar{
       & > li {
         & > a{
           font-size: 13px;
-          padding: 1rem 1.3rem;
         }
         & > ul{
           position: absolute;

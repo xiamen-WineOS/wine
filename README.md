@@ -18,6 +18,16 @@ npm run et-watch
 # install dependencies
 npm install
 
+# 升级npm到5.x版本
+npm version
+npm install -g npm
+# install dependencies 进入工程路径
+
+# install dependencies 使用淘宝的镜像
+npm install --registry=https://registry.npm.taobao.org --chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver --phantomjs_cdnurl=http://npm.taobao.org/mirrors/phantomjs
+# 或者更换 npm 源，命令为 
+npm config set registry https://registry.npm.taobao.org
+
 # serve with hot reload at localhost:8080
 npm run dev
 

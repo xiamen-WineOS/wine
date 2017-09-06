@@ -2,6 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/views/Index'
 
+import List from '@/views/List'
+import Intro from '@/views/List/Intro'
+import TimeLine from '@/views/List/TimeLine'
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +24,18 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Index
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: List,
+      children: [{
+        path: '',
+        component: Intro
+      }, {
+        path: '/timeline',
+        component: TimeLine
+      }]
     }
   ]
 })

@@ -5,17 +5,20 @@
       <router-view></router-view>
       <app-footer></app-footer>
     </div>
+    <fixed-nav></fixed-nav>
   </div>
 </template>
 
 <script>
 import AppHeader from '@/views/include/AppHeader'
 import AppFooter from '@/views/include/AppFooter'
+import FixedNav from '@/views/include/FixedNav'
 export default {
   name: 'app',
   components: {
     AppHeader,
-    AppFooter
+    AppFooter,
+    FixedNav
   }
 }
 </script>
