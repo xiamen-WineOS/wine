@@ -15,9 +15,9 @@
         </div>
         <div class="mobile-content" :class="{'is-open': isOpen}">
           <nav class="menu top-bar">
-            <li><a href="/">首页</a></li>
+            <li><router-link to="/">首 页</router-link></li>
             <li @click="toggleSubMenu(2)">
-              <a href="/">关于和八达 </a>
+              <router-link to="/about">关于和八达</router-link>
               <i class="el-icon-arrow-down"></i>
               <ul class="vertical menu" :class="{active: index===2}">
                 <li><a href="/">企业概况</a></li>
@@ -27,12 +27,12 @@
               </ul>
             </li>
             <li @click="toggleSubMenu(3)">
-              <a href="/">新闻资讯</a>
+              <router-link :to="{name:'news',params: {caId: '1'}}">新闻资讯</router-link>
               <i class="el-icon-arrow-down"></i>
               <ul class="vertical menu" :class="{active: index===3}">
-                <li><a href="/">行业新闻</a></li>
-                <li><a href="/">最新公告</a></li>
-                <li><a href="/">行业动态</a></li>
+                <li><router-link :to="{name:'news',params: {caId: '1'}}">行业新闻</router-link></li>
+                <li><router-link :to="{name:'news',params: {caId: '2'}}">最新公告</router-link></li>
+                <li><router-link :to="{name:'news',params: {caId: '3'}}">行业动态</router-link></li>
               </ul>
             </li>
             <li @click="toggleSubMenu(4)">

@@ -39,7 +39,7 @@
   position: fixed;
   right: 2rem;
   bottom: 2rem;
-  z-index: 1000;
+  z-index: 1;
   & a{
     display: flex;
     height: 50px;
@@ -78,7 +78,7 @@
     margin: 0;
   }
   &.ivu-back-top-show{
-    height: 54px;
+    height: 50px;
     & a:hover{
       color:#fff;
       background: var(--color-primary);

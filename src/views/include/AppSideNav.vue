@@ -1,21 +1,32 @@
 <template>
   <div class="side-nav">
     <ul class="margin-l">
-      <router-link tag="li" to="/intro" class="active">
-        <a>企业概况<i class="el-icon-arrow-right"></i></a>
-      </router-link>
-      <router-link tag="li" to="/" exact>
-        <a>企业历程<i class="el-icon-arrow-right"></i></a>
-      </router-link>
-      <router-link tag="li" to="/" exact>
-        <a>资质荣誉<i class="el-icon-arrow-right"></i></a>
-      </router-link>
-      <router-link tag="li" to="/" exact>
-        <a>团队管理<i class="el-icon-arrow-right"></i></a>
+      <router-link v-for="(item, index) in nav" tag="li" :to="{name: item.name}">
+        <a>{{item.title}}<i class="el-icon-arrow-right"></i></a>
       </router-link>
     </ul>
   </div>
 </template>
+<script>
+  export default {
+    data () {
+      return {}
+    },
+    props: {
+      nav: {
+        type: Array,
+        default: function () {
+          return []
+        }
+      }
+    },
+    watch: {
+      nav (nv) {
+        console.log(nv)
+      }
+    }
+  }
+</script>
 <style scoped="scoped">
   @import 'css/variable.css';
   .side-nav li {

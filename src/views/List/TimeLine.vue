@@ -1,4 +1,8 @@
 <template>
+  <section>
+    <header>
+    <h2 class="margin-t">企业历程</h2>
+  </header>
   <div class="timeline">
     <ul>
       <li class="clearfix">
@@ -22,6 +26,7 @@
       </li>
     </ul>
   </div>
+  </section>
 </template>
 <style>
 @import 'css/variable.css';
