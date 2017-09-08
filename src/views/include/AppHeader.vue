@@ -14,7 +14,7 @@
             <span class="menu-patty"></span>
         </div>
         <div class="mobile-content" :class="{'is-open': isOpen}">
-          <nav class="menu top-bar">
+          <!--<nav class="menu top-bar">
             <li><router-link to="/">首 页</router-link></li>
             <li @click="toggleSubMenu(2)">
               <router-link to="/about">关于和八达</router-link>
@@ -65,7 +65,18 @@
               </ul>
             </li>
           </nav>
-      
+          -->
+          <nav class="menu top-bar">
+            <li v-for="(item, index) in catalogTree" key="index" @click="toggleSubMenu(index)">
+              <router-link  :to="{name: item.name, params: {caId: item.id}}"><span @click="closeMenu">{{item.title}}</span></router-link>
+              <i class="el-icon-arrow-down" v-if="item.children"></i>
+              <ul class="vertical menu" :class="{active: currindex===index}" v-if="item.children">
+                <li v-for="(list, index) in item.children">
+                  <router-link :to="{name: list.name, params: {caId: list.id}}"><span @click="closeMenu">{{item.title}}</span></router-link>
+                </li>
+              </ul>
+            </li>
+          </nav>
         </div>
       </div>
     </div>
@@ -73,23 +84,33 @@
   </header>
 </template>
 <script>
+  import { mapState } from 'vuex'
   export default {
     data () {
       return {
         isOpen: false,
-        index: 1
+        currindex: 1
       }
+    },
+    computed: {
+      ...mapState({
+        catalogTree: state => state.catalogTree
+      })
     },
     methods: {
       toggleMenu () {
         this.isOpen = !this.isOpen
       },
       toggleSubMenu (index) {
-        if (this.index === index) {
-          this.index = 1
+        console.log(index)
+        if (this.currindex === index) {
+          this.currindex = 1
         } else {
-          this.index = index
+          this.currindex = index
         }
+      },
+      closeMenu () {
+        this.isOpen = false
       }
     },
     watch: {

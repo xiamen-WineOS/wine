@@ -513,6 +513,20 @@ blockquote {
     flex: 1 1 0px;
   }
 }
+.white-space3{
+  color: var(--color-secondary) !important;
+  font-size: 12px !important;
+  letter-spacing: .125ex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-align: center;
+  padding: 0 10px;
+  word-wrap: break-word;
+  height: 68px;
+}
 @media only screen and (min-width: 769px) {
   .hide-for-medium {
     display: none;
@@ -716,5 +730,8 @@ figure.one-third{
   }
   .list-title{
     height: 78px;
+  }
+  .inner {
+    padding: 0;
   }
 }

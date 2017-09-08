@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import '@/assets/element/theme/index.css'
 import Element from 'element-ui'
-import { Breadcrumb, BreadcrumbItem, Popover, Pagination, Table, TableColumn} from 'element-ui'
+import { Breadcrumb, BreadcrumbItem, Popover, Pagination, Table, TableColumn, Button, Form, FormItem, Input} from 'element-ui'
 
 import Vue from 'vue'
 import App from './App'
@@ -21,6 +21,10 @@ Vue.use(Popover)
 Vue.use(Pagination)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
 
 // 引入swiper
 Vue.use(VueAwesomeSwiper)

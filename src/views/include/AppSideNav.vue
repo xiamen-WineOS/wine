@@ -1,7 +1,7 @@
 <template>
   <div class="side-nav">
     <ul class="margin-l">
-      <router-link v-for="(item, index) in nav" tag="li" :to="{name: item.name}">
+      <router-link v-for="(item, index) in nav" tag="li" key="index" :to="{name: item.name, params: {caId: item.id}}">
         <a>{{item.title}}<i class="el-icon-arrow-right"></i></a>
       </router-link>
     </ul>
@@ -72,14 +72,14 @@
       color: var(--color-warning);
       font-size: 12px;
     }
-    &:hover a, &.active a{
+    &:hover a, &.router-link-exact-active a{
       color: color(var(--color-primary) shade(20%));
       & i{
         right: 0;
         opacity: 1;
       }
     }
-    &:hover:before, &.active:before{
+    &:hover:before, &.router-link-exact-active:before{
       left: 0;
     }
   }

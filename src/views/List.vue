@@ -50,13 +50,12 @@
     },
     methods: {
       getNav () {
-        this.navList = this.$store.state.catalogTree['about'].children
-        console.log('router', this.navList)
+        var name = this.$route.path.split('/')[1]
+        this.navList = this.$store.state.catalogTree[name].children
       }
     },
     watch: {
       $route (nv) {
-        console.log(nv)
         this.getNav()
       }
     },

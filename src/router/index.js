@@ -42,7 +42,7 @@ export default new Router({
       path: '/about',
       component: List,
       children: [{
-        path: '/',
+        path: '/about/',
         name: 'intro',
         component: Intro
       }, {
