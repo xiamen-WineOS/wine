@@ -4,39 +4,31 @@
       <h2 class="margin-t">招聘信息</h2>
     </header>
     <div class="article-section">
-      <el-table
-        :data="tableData"
-        style="width: 100%">
-        <el-table-column
-          label="职位名称"
-          width="280">
-          <template scope="scope">
-           <a href="">
-             {{ scope.row.name }}
-           </a>
-          </template>
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="地点">
-        </el-table-column>
-        <el-table-column
-          prop="num"
-          label="招聘人数"
-          width="100">
-        </el-table-column>
-        <el-table-column
-          prop="date"
-          label="发布时间">
-        </el-table-column>
-      </el-table>
+      <el-form ref="form" :model="form" label-width="80px">
+          <el-form-item label="您的称呼">
+            <el-input v-model="form.name"></el-input>
+          </el-form-item>
+          <el-form-item label="留言内容">
+            <el-input type="textarea" v-model="form.desc"></el-input>
+          </el-form-item>
+          <el-form-item label="手机号码">
+            <el-input v-model="form.tel"></el-input>
+          </el-form-item>
+          <el-form-item label="Email">
+            <el-input v-model="form.emil"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">提交留言</el-button>
+          </el-form-item>
+        </el-form>
+      
       <div class="row margin-t text-center">
-      <el-pagination
-        small
-        layout="prev, pager, next"
-        :total="50">
-      </el-pagination>
-    </div>
+        <el-pagination
+          small
+          layout="prev, pager, next"
+          :total="50">
+        </el-pagination>
+      </div>
     </div>
   </article>
 </template>
