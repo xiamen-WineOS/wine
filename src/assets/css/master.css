@@ -523,7 +523,6 @@ blockquote {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-align: center;
-  padding: 0 10px;
   word-wrap: break-word;
   height: 68px;
 }

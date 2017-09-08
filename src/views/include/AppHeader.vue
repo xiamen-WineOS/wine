@@ -68,11 +68,11 @@
           -->
           <nav class="menu top-bar">
             <li v-for="(item, index) in catalogTree" key="index" @click="toggleSubMenu(index)">
-              <router-link  :to="{name: item.name, params: {caId: item.id}}"><span @click="closeMenu">{{item.title}}</span></router-link>
+              <router-link  :to="{name: item.name, params: {caId: item.id}}">{{item.title}}</router-link>
               <i class="el-icon-arrow-down" v-if="item.children"></i>
               <ul class="vertical menu" :class="{active: currindex===index}" v-if="item.children">
                 <li v-for="(list, index) in item.children">
-                  <router-link :to="{name: list.name, params: {caId: list.id}}"><span @click="closeMenu">{{item.title}}</span></router-link>
+                  <router-link :to="{name: list.name, params: {caId: list.id}}">{{list.title}}</router-link>
                 </li>
               </ul>
             </li>
@@ -120,6 +120,9 @@
         } else {
           document.body.style.overflow = 'auto'
         }
+      },
+      $route () {
+        this.isOpen = false
       }
     }
   }
