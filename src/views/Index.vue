@@ -336,10 +336,6 @@
       }
     }
     @media only screen and (max-width: 640px) {
-      .wrapper{
-        height: calc(100vh - 46px);
-        overflow: auto;
-      }
     	.banner-swiper {
         & .swiper-button-prev, & .swiper-button-next{
           opacity: 1;

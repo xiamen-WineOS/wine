@@ -31,12 +31,12 @@
         </el-table-column>
       </el-table>
       <div class="row margin-t text-center">
-        <el-pagination
-          small
-          layout="prev, pager, next"
-          :total="50">
-        </el-pagination>
-      </div>
+      <el-pagination
+        small
+        layout="prev, pager, next"
+        :total="50">
+      </el-pagination>
+    </div>
     </div>
   </article>
 </template>
@@ -44,12 +44,6 @@
   export default {
     data () {
       return {
-        form: {
-          name: '',
-          emil: '',
-          tel: '',
-          desc: ''
-        },
         tableData: [{
           date: '2016-05-02',
           name: '贵州茅台酒厂（集团）习酒有限责任公司 招聘公告(已结束）',
@@ -71,9 +65,6 @@
           num: 4
         }]
       }
-    },
-    methods: {
-      onSubmit () {}
     }
   }
 </script>
@@ -85,4 +76,3 @@
   padding: 4px 0;
 }
 </style>
-

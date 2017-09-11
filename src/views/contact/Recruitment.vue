@@ -1,7 +1,7 @@
 <template>
   <article>
     <header>
-      <h2 class="margin-t">招聘信息</h2>
+      <h2 class="margin-t">留言中心</h2>
     </header>
     <div class="article-section">
       <el-form ref="form" :model="form" label-width="80px">
@@ -21,7 +21,6 @@
             <el-button type="primary" @click="onSubmit">提交留言</el-button>
           </el-form-item>
         </el-form>
-      
       <div class="row margin-t text-center">
         <el-pagination
           small
@@ -36,6 +35,12 @@
   export default {
     data () {
       return {
+        form: {
+          name: '',
+          emil: '',
+          tel: '',
+          desc: ''
+        },
         tableData: [{
           date: '2016-05-02',
           name: '贵州茅台酒厂（集团）习酒有限责任公司 招聘公告(已结束）',
@@ -57,6 +62,9 @@
           num: 4
         }]
       }
+    },
+    methods: {
+      onSubmit () {}
     }
   }
 </script>

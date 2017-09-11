@@ -11,6 +11,7 @@ import Team from '@/views/list/Team'
 import News from '@/views/news/News'
 
 import Wine from '@/views/products/Wine'
+import ProductDetail from '@/views/products/ProductDetail'
 
 import Culture from '@/views/culture/Cphilosophy'
 
