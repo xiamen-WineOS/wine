@@ -19,7 +19,7 @@
       </div>
       <div class="large-19 columns">
         <div class="article-content">
-          <router-view></router-view>
+          <intro></intro>
         </div>
       </div>
     </div>
@@ -27,21 +27,15 @@
 </template>
 <script>
   import AppSideNav from '@/views/include/AppSideNav'
+  import Intro from '@/views/list/Intro'
   export default {
     data () {
       return {
       }
     },
-    created () {
-    },
-    methods: {
-    },
-    watch: {
-      $route (nv) {
-      }
-    },
     components: {
-      AppSideNav
+      AppSideNav,
+      Intro
     }
   }
 </script>

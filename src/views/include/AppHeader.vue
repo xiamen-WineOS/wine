@@ -85,11 +85,13 @@
 </template>
 <script>
   import { mapState } from 'vuex'
+  import { fetchCatalog } from '../../api'
   export default {
     data () {
       return {
         isOpen: false,
-        currindex: 1
+        currindex: 1,
+        catalogTrees: []
       }
     },
     computed: {
@@ -97,7 +99,18 @@
         catalogTree: state => state.catalogTree
       })
     },
+    mounted () {
+      this.$nextTick(function () {
+        this.getCatalog()
+      })
+    },
     methods: {
+      getCatalog () {
+        fetchCatalog().then((res) => {
+          
+          console.log(res)
+        })
+      },
       toggleMenu () {
         this.isOpen = !this.isOpen
       },

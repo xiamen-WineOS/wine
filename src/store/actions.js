@@ -12,9 +12,6 @@ export default {
       commit('SET_ITEMS', { data })
       commit('SET_TREEDATA', { treeData })
       commit('SET_SOURCEDATA', { sourceData })
-      commit('SET_PAGE', { page })
-      commit('SET_CURRURL', currUrl)
-      commit('SET_FILTERS', filters)
     })
   }
 }

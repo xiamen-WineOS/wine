@@ -1,7 +1,7 @@
 <template>
   <div class="side-nav">
     <ul class="margin-l">
-      <router-link v-for="(item, index) in nav" tag="li" key="index" :to="{name: item.name, params: {caId: item.id}}">
+      <router-link v-for="(item, index) in navList" tag="li" key="index" :to="{name: item.name, params: {caId: item.id}}">
         <a>{{item.title}}<i class="el-icon-arrow-right"></i></a>
       </router-link>
     </ul>
@@ -10,19 +10,25 @@
 <script>
   export default {
     data () {
-      return {}
+      return {
+        navList: []
+      }
     },
-    props: {
-      nav: {
-        type: Array,
-        default: function () {
-          return []
-        }
+    created () {
+      this.getNav()
+    },
+    methods: {
+      getNav () {
+        var arr = this.$route.path.split('/')
+        var length = arr.length
+        var name = arr[length - 1]
+        this.navList = this.$store.state.catalogTree[name].children
+        console.log(1, name, this.navList)
       }
     },
     watch: {
-      nav (nv) {
-        console.log(nv)
+      $route (nv) {
+        this.getNav()
       }
     }
   }

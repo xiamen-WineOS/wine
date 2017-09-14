@@ -19,7 +19,7 @@
       </div>
       <div class="large-19 columns">
         <div class="article-content">
-          <router-view></router-view>
+          <news></news>
         </div>
       </div>
     </div>
@@ -27,6 +27,7 @@
 </template>
 <script>
   import AppSideNav from '@/views/include/AppSideNav'
+  import News from '@/views/news/News'
   export default {
     data () {
       return {
@@ -37,11 +38,10 @@
     methods: {
     },
     watch: {
-      $route (nv) {
-      }
     },
     components: {
-      AppSideNav
+      AppSideNav,
+      News
     }
   }
 </script>

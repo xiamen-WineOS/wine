@@ -19,7 +19,7 @@
       </div>
       <div class="large-19 columns">
         <div class="article-content">
-          <router-view></router-view>
+          <honor></honor>
         </div>
       </div>
     </div>
@@ -27,21 +27,15 @@
 </template>
 <script>
   import AppSideNav from '@/views/include/AppSideNav'
+  import Honor from '@/views/list/Honor'
   export default {
     data () {
       return {
       }
     },
-    created () {
-    },
-    methods: {
-    },
-    watch: {
-      $route (nv) {
-      }
-    },
     components: {
-      AppSideNav
+      AppSideNav,
+      Honor
     }
   }
 </script>

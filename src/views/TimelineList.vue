@@ -19,7 +19,7 @@
       </div>
       <div class="large-19 columns">
         <div class="article-content">
-          <router-view></router-view>
+          <timeline></timeline>
         </div>
       </div>
     </div>
@@ -27,6 +27,7 @@
 </template>
 <script>
   import AppSideNav from '@/views/include/AppSideNav'
+  import Timeline from '@/views/list/Timeline'
   export default {
     data () {
       return {
@@ -37,11 +38,10 @@
     methods: {
     },
     watch: {
-      $route (nv) {
-      }
     },
     components: {
-      AppSideNav
+      AppSideNav,
+      Timeline
     }
   }
 </script>

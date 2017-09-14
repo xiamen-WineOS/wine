@@ -19,7 +19,7 @@
       </div>
       <div class="large-19 columns">
         <div class="article-content">
-          <router-view></router-view>
+          <feed-book></feed-book>
         </div>
       </div>
     </div>
@@ -27,21 +27,15 @@
 </template>
 <script>
   import AppSideNav from '@/views/include/AppSideNav'
+  import FeedBook from '@/views/contact/FeedBook'
   export default {
     data () {
       return {
       }
     },
-    created () {
-    },
-    methods: {
-    },
-    watch: {
-      $route (nv) {
-      }
-    },
     components: {
-      AppSideNav
+      AppSideNav,
+      FeedBook
     }
   }
 </script>
