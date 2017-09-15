@@ -1,17 +1,23 @@
+import {
+  fetchCatalog
+} from '../api'
 
 export default {
   // ensure data for rendering given list type
-  FETCH_LIST_DATA: ({ commit, state }, param) => {
-    fetch(param).then(function (res) {
-      var data = res.result.articleList
-      var treeData = res.catalogTree
-      var sourceData = res.result.facetModelList.splice(1, res.result.facetModelList.length)
-      var page = res.result.page
-      var currUrl = res.result.currFilterUrl
-      var filters = res.result.filterParamMap
-      commit('SET_ITEMS', { data })
-      commit('SET_TREEDATA', { treeData })
-      commit('SET_SOURCEDATA', { sourceData })
+  FETCH_CATALOG: ({ commit, state }) => {
+    fetchCatalog().then(function (res) {
+      var catalogTree = res.data
+      var resultCatalogTree = []
+      for(let i of catalogTree) {
+        var a = new Object()
+        a[i.id] = i
+        resultCatalogTree.push(a)
+      }
+      console.log(2, resultCatalogTree)
+      commit('SET_CATALOGTREE', { resultCatalogTree })
     })
+  },
+  FETCH_SUBCATALOG: ({ commit, state }, catagory) =>{
+    commit('SET_SUBCATALOGTREE',catagory)
   }
 }

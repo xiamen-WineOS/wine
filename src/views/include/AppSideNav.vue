@@ -1,34 +1,34 @@
 <template>
   <div class="side-nav">
     <ul class="margin-l">
-      <router-link v-for="(item, index) in navList" tag="li" key="index" :to="{name: item.name, params: {caId: item.id}}">
-        <a>{{item.title}}<i class="el-icon-arrow-right"></i></a>
+      <router-link v-for="(item, index) in subcatalog" tag="li" key="index" :to="{name: item.templateName, params: {id: item.id}}">
+        <a>{{item.chineseName}}<i class="el-icon-arrow-right"></i></a>
       </router-link>
     </ul>
   </div>
 </template>
 <script>
+  import { mapState } from 'vuex'
   export default {
     data () {
       return {
         navList: []
       }
     },
+    computed: {
+      ...mapState({
+        subcatalog: state => state.subcatalog
+      })
+    },
     created () {
-      this.getNav()
     },
     methods: {
-      getNav () {
-        var arr = this.$route.path.split('/')
-        var length = arr.length
-        var name = arr[length - 1]
-        this.navList = this.$store.state.catalogTree[name].children
-        console.log(1, name, this.navList)
-      }
     },
     watch: {
       $route (nv) {
-        this.getNav()
+      },
+      subcatalog (nv) {
+        console.log(2222222, nv)
       }
     }
   }

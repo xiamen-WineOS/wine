@@ -30,7 +30,7 @@ export default new Router({
       name: 'index',
       component: Index
     }, {
-      path: '/ar/:caId',
+      path: '/ar/:id',
       name: 'ar',
       component: Ar
     }, {
@@ -46,11 +46,11 @@ export default new Router({
       name: 'team',
       component: TeamList
     }, {
-      path: '/news/:caId',
+      path: '/news/:id',
       name: 'news',
       component: NewsList
     }, {
-      path: '/product/:caId',
+      path: '/product/:id',
       name: 'product',
       component: ProductList
     }, {

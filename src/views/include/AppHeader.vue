@@ -68,30 +68,28 @@
           -->
           <nav class="menu top-bar">
             <li v-for="(item, index) in catalogTree" key="index" @click="toggleSubMenu(index)">
-              <router-link  :to="{name: item.name, params: {caId: item.id}}">{{item.title}}</router-link>
-              <i class="el-icon-arrow-down" v-if="item.children"></i>
-              <ul class="vertical menu" :class="{active: currindex===index}" v-if="item.children">
-                <li v-for="(list, index) in item.children">
-                  <router-link :to="{name: list.name, params: {caId: list.id}}">{{list.title}}</router-link>
+             <!-- <router-link :to="{name: item[getObjectKey(item)].templateName, params: {caId: getObjectKey(item)}}">{{item[getObjectKey(item)].chineseName}}</router-link>-->
+              <a @click="topCatalog(item[getObjectKey(item)].templateName, getObjectKey(item), item[getObjectKey(item)].children)">{{item[getObjectKey(item)].chineseName}}</a>
+              <i class="el-icon-arrow-down" v-if="item[getObjectKey(item)].children.length"></i>
+              <ul class="vertical menu" :class="{active: currindex===index}" v-if="item[getObjectKey(item)].children">
+                <li v-for="(list, index) in item[getObjectKey(item)].children">
+                  <router-link :to="{name: list.templateName, params: {id: list.id}}">{{list.chineseName}}</router-link>
                 </li>
               </ul>
             </li>
           </nav>
         </div>
       </div>
-    </div>
-    <div></div>
+  </div>
   </header>
 </template>
 <script>
   import { mapState } from 'vuex'
-  import { fetchCatalog } from '../../api'
   export default {
     data () {
       return {
         isOpen: false,
         currindex: 1,
-        catalogTrees: []
       }
     },
     computed: {
@@ -106,13 +104,21 @@
     },
     methods: {
       getCatalog () {
-        fetchCatalog().then((res) => {
-          
-          console.log(res)
-        })
+        this.$store.dispatch('FETCH_CATALOG')
+      },
+      topCatalog (templateName, caId, children) {
+        this.$router.push({ name: templateName, params: { id: parseInt(caId) + 1} }); 
+        this.searchCatalog(children)
+      },
+      searchCatalog (subCatalog) {
+        this.$store.dispatch('FETCH_SUBCATALOG', subCatalog)
       },
       toggleMenu () {
         this.isOpen = !this.isOpen
+      },
+      getObjectKey (item) {
+        for (var key in item) {}
+        return key
       },
       toggleSubMenu (index) {
         console.log(index)
@@ -132,6 +138,11 @@
           document.body.style.overflow = 'hidden'
         } else {
           document.body.style.overflow = 'auto'
+        }
+      },
+      catalogTree (nv) {
+        for(let i of nv){
+          console.log(3, i)
         }
       },
       $route () {
