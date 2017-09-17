@@ -152,6 +152,12 @@
         scale: 0.8,
       }
       window.sr = new ScrollReveal()
+      this.getCatalog()
+    },
+    methods: {
+      getCatalog () {
+        this.$store.dispatch('FETCH_CATALOG')
+      }
     },
     mounted () {
       var flag = screenwidth()

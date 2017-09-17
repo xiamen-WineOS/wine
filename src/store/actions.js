@@ -7,7 +7,6 @@ export default {
   FETCH_CATALOG: ({ commit, state }) => {
     fetchCatalog().then(function (res) {
       var catalogTree = res.data
-      console.log(catalogTree)
       commit('SET_CATALOGTREE', { catalogTree })
     })
   },

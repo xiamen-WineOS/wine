@@ -30,35 +30,35 @@ export default new Router({
       name: 'index',
       component: Index
     }, {
-      path: '/ar/:id',
+      path: '/ar/:parentId/:id',
       name: 'ar',
       component: Ar
     }, {
-      path: '/about/timeline',
+      path: '/about/timeline/:parentId/:id',
       name: 'timeline',
       component: Timeline
     }, {
-      path: '/about/honor',
+      path: '/about/honor/:parentId/:id',
       name: 'honor',
       component: HonorList
     }, {
-      path: '/about/team',
+      path: '/about/team/:parentId/:id',
       name: 'team',
       component: TeamList
     }, {
-      path: '/news/:id',
+      path: '/news/:parentId/:id',
       name: 'news',
       component: NewsList
     }, {
-      path: '/product/:id',
+      path: '/product/:parentId/:id',
       name: 'product',
       component: ProductList
     }, {
-      path: '/contact/feedbook/:id',
+      path: '/contact/feedbook/:parentId/:id',
       name: 'feedbook',
       component: FeedBook
     }, {
-      path: '/contact/Recruitment/:id',
+      path: '/contact/Recruitment/:parentId/:id',
       name: 'recruitment',
       component: Recruitment
     }]
