@@ -1,14 +1,19 @@
 <template>
   <div class="side-nav">
     <ul class="margin-l">
-      <router-link v-for="(item, index) in subcatalog" tag="li" key="index" :to="{name: item.templateName, params: {id: item.id}}">
-        <a>{{item.chineseName}}<i class="el-icon-arrow-right"></i></a>
-      </router-link>
+      <li v-for="(item, index) in navList" key="index">
+        <router-link 
+          :to="{ name: item.templateName, params: {id: item.id}}">
+          {{item.chineseName}} <i class="el-icon-arrow-right"></i>
+        </router-link>
+        <!--<a @click="fetchArticle(item.templateName, item.id)">{{item.chineseName}}<i class="el-icon-arrow-right"></i></a>-->
+      </li>
     </ul>
   </div>
 </template>
 <script>
   import { mapState } from 'vuex'
+  import { fetchArticle } from '../../api'
   export default {
     data () {
       return {
@@ -17,18 +22,26 @@
     },
     computed: {
       ...mapState({
-        subcatalog: state => state.subcatalog
+        catalogTree: state => state.catalogTree
       })
     },
-    created () {
+    mounted () {
+      this.getSubcatalog()
     },
     methods: {
+      getSubcatalog () {
+        var caId = parseInt(this.$route.params.id)
+        if (this.catalogTree[caId] && JSON.stringify(this.catalogTree[caId].children) != '{}') {
+           this.navList = this.catalogTree[caId].children
+        }
+        console.log('this.navList', this.catalogTree, this.navList)
+      }
     },
     watch: {
-      $route (nv) {
+      $route (nv, ov) {
+        console.log(222, nv, ov)
       },
       subcatalog (nv) {
-        console.log(2222222, nv)
       }
     }
   }

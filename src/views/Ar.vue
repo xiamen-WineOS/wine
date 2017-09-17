@@ -28,10 +28,18 @@
 <script>
   import AppSideNav from '@/views/include/AppSideNav'
   import Intro from '@/views/list/Intro'
+  import { mapState } from 'vuex'
   export default {
     data () {
       return {
       }
+    },
+    methods: {
+    },
+    computed: {
+      ...mapState({
+        article: state => state.article
+      })
     },
     components: {
       AppSideNav,

@@ -54,11 +54,11 @@ export default new Router({
       name: 'product',
       component: ProductList
     }, {
-      path: '/contact/feedbook',
+      path: '/contact/feedbook/:id',
       name: 'feedbook',
       component: FeedBook
     }, {
-      path: '/contact/Recruitment',
+      path: '/contact/Recruitment/:id',
       name: 'recruitment',
       component: Recruitment
     }]

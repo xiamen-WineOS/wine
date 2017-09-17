@@ -14,65 +14,12 @@
             <span class="menu-patty"></span>
         </div>
         <div class="mobile-content" :class="{'is-open': isOpen}">
-          <!--<nav class="menu top-bar">
-            <li><router-link to="/">首 页</router-link></li>
-            <li @click="toggleSubMenu(2)">
-              <router-link to="/about">关于和八达</router-link>
-              <i class="el-icon-arrow-down"></i>
-              <ul class="vertical menu" :class="{active: index===2}">
-                <li><a href="/">企业概况</a></li>
-                <li><a href="/">企业历程</a></li>
-                <li><a href="/">资质荣誉</a></li>
-                <li><a href="/">团队管理</a></li>
-              </ul>
-            </li>
-            <li @click="toggleSubMenu(3)">
-              <router-link :to="{name:'news',params: {caId: '1'}}">新闻资讯</router-link>
-              <i class="el-icon-arrow-down"></i>
-              <ul class="vertical menu" :class="{active: index===3}">
-                <li><router-link :to="{name:'news',params: {caId: '1'}}">行业新闻</router-link></li>
-                <li><router-link :to="{name:'news',params: {caId: '2'}}">最新公告</router-link></li>
-                <li><router-link :to="{name:'news',params: {caId: '3'}}">行业动态</router-link></li>
-              </ul>
-            </li>
-            <li @click="toggleSubMenu(4)">
-              <a href="/">产品展示 </a>
-              <i class="el-icon-arrow-down" ></i>
-              <ul class="vertical menu" :class="{active: index===4}">
-                <li><a href="/">习酒</a></li>
-                <li><a href="/">洋酒</a></li>
-                <li><a href="/">红酒</a></li>
-              </ul>
-            </li>
-            <li @click="toggleSubMenu(5)">
-              <a href="/">企业文化</a>
-              <i class="el-icon-arrow-down"></i>
-              <ul class="vertical menu" :class="{active: index===5}">
-                <li><a href="/">企业理念</a></li>
-                <li><a href="/">习酒文化</a></li>
-                <li><a href="/">红酒文化</a></li>
-                <li><a href="/">洋酒文化</a></li>
-              </ul>
-            </li>
-            <li @click="toggleSubMenu(6)">
-              <a href="/">联系我们</a>
-               <i class="el-icon-arrow-down"></i>
-              <ul class="vertical menu" :class="{active: index===6}">
-                <li><a href="/">联系我们</a></li>
-                <li><a href="/">企业位置</a></li>
-                <li><a href="/">留言中心</a></li>
-                <li><a href="/">招聘信息</a></li>
-              </ul>
-            </li>
-          </nav>
-          -->
           <nav class="menu top-bar">
             <li v-for="(item, index) in catalogTree" key="index" @click="toggleSubMenu(index)">
-             <!-- <router-link :to="{name: item[getObjectKey(item)].templateName, params: {caId: getObjectKey(item)}}">{{item[getObjectKey(item)].chineseName}}</router-link>-->
-              <a @click="topCatalog(item[getObjectKey(item)].templateName, getObjectKey(item), item[getObjectKey(item)].children)">{{item[getObjectKey(item)].chineseName}}</a>
-              <i class="el-icon-arrow-down" v-if="item[getObjectKey(item)].children.length"></i>
-              <ul class="vertical menu" :class="{active: currindex===index}" v-if="item[getObjectKey(item)].children">
-                <li v-for="(list, index) in item[getObjectKey(item)].children">
+              <router-link :to="{name: item.templateName, params: {id: item.id}}">{{item.chineseName}}</router-link>
+              <i class="el-icon-arrow-down" v-if='JSON.stringify(item.children) != "{}"'></i>
+              <ul class="vertical menu" :class="{active: currindex===index}" v-if='JSON.stringify(item.children) != "{}"'>
+                <li v-for="(list, index) in item.children">
                   <router-link :to="{name: list.templateName, params: {id: list.id}}">{{list.chineseName}}</router-link>
                 </li>
               </ul>
@@ -92,15 +39,15 @@
         currindex: 1,
       }
     },
+    created () {
+      this.getCatalog()
+    },
     computed: {
       ...mapState({
         catalogTree: state => state.catalogTree
       })
     },
     mounted () {
-      this.$nextTick(function () {
-        this.getCatalog()
-      })
     },
     methods: {
       getCatalog () {
@@ -121,7 +68,6 @@
         return key
       },
       toggleSubMenu (index) {
-        console.log(index)
         if (this.currindex === index) {
           this.currindex = 1
         } else {
@@ -138,11 +84,6 @@
           document.body.style.overflow = 'hidden'
         } else {
           document.body.style.overflow = 'auto'
-        }
-      },
-      catalogTree (nv) {
-        for(let i of nv){
-          console.log(3, i)
         }
       },
       $route () {

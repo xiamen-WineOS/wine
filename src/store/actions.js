@@ -7,14 +7,8 @@ export default {
   FETCH_CATALOG: ({ commit, state }) => {
     fetchCatalog().then(function (res) {
       var catalogTree = res.data
-      var resultCatalogTree = []
-      for(let i of catalogTree) {
-        var a = new Object()
-        a[i.id] = i
-        resultCatalogTree.push(a)
-      }
-      console.log(2, resultCatalogTree)
-      commit('SET_CATALOGTREE', { resultCatalogTree })
+      console.log(catalogTree)
+      commit('SET_CATALOGTREE', { catalogTree })
     })
   },
   FETCH_SUBCATALOG: ({ commit, state }, catagory) =>{
