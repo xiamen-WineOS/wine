@@ -1,16 +1,7 @@
 <template>
   <div class="main">
     <div class="list-title">
-      <div class="row">
-        <div class="large-24 columns">
-          <h2 class="margin-t">关于和八达</h2>
-          <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>关于和八达</el-breadcrumb-item>
-            <el-breadcrumb-item>企业概况</el-breadcrumb-item>
-          </el-breadcrumb>
-        </div>
-      </div>
+      <breadcrumb></breadcrumb>
     </div>
     <div class="row">
       <div class="large-5 columns hide-for-large">
@@ -27,6 +18,7 @@
 </template>
 <script>
   import AppSideNav from '@/views/include/AppSideNav'
+  import Breadcrumb from '@/views/include/Breadcrumb'
   export default {
     data () {
       return {
@@ -41,7 +33,8 @@
       }
     },
     components: {
-      AppSideNav
+      AppSideNav,
+      Breadcrumb
     }
   }
 </script>

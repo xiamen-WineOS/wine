@@ -1,5 +1,6 @@
 import {
-  fetchCatalog
+  fetchCatalog,
+  fetchArticle
 } from '../api'
 
 export default {
@@ -10,7 +11,13 @@ export default {
       commit('SET_CATALOGTREE', { catalogTree })
     })
   },
-  FETCH_SUBCATALOG: ({ commit, state }, catagory) =>{
-    commit('SET_SUBCATALOGTREE',catagory)
+  FETCH_ARTICLE: ({ commit, state }, param) =>{
+    fetchArticle(param).then(function (res) {
+      var article = res.data
+      commit('SET_ARTICLE',article)
+    }) 
+      
+
+    
   }
 }

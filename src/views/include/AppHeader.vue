@@ -17,8 +17,8 @@
           <nav class="menu top-bar">
             <li v-for="(item, index) in catalogTree" key="index" @click="toggleSubMenu(index)">
               <router-link :to="{name: item.templateName, params: {parentId: item.id, id: item.id + 1}}">{{item.chineseName}}</router-link>
-              <i class="el-icon-arrow-down" v-if='JSON.stringify(item.children) != "{}"'></i>
-              <ul class="vertical menu" :class="{active: currindex===index}" v-if='JSON.stringify(item.children) != "{}"'>
+              <i class="el-icon-arrow-down" v-if='item.children.length'></i>
+              <ul class="vertical menu" :class="{active: currindex===index}" v-if='item.children.length'>
                 <li v-for="(list, index) in item.children">
                   <router-link :to="{name: list.templateName, params: {parentId: list.parentId, id: list.id}}">{{list.chineseName}}</router-link>
                 </li>

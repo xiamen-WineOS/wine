@@ -13,12 +13,10 @@
 </template>
 <script>
   import { mapState } from 'vuex'
-  import { fetchCatalog } from '../../api'
   export default {
     data () {
       return {
-        navList: [],
-        asyncTree: null
+        navList: []
       }
     },
     created () {
@@ -41,6 +39,9 @@
     },
     watch: {
       catalogTree (nv) {
+        this.getSubcatalog()
+      },
+      $route (nv) {
         this.getSubcatalog()
       }
     }
