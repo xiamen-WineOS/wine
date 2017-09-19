@@ -5,8 +5,16 @@ Vue.use(VueResource)
 const Api = {
   databaseUrl: '/api/article/',
   oneArticle: '/api/catalog/',
-  moreArticle: '/api/catalog/:caId/article/',
+  articleList: '/api/article/list/',
   catalogUrl: '/api/catalog/list'
+}
+
+export function fetchArticleList (param) {
+  var url = Api.articleList
+  
+  return Vue.http.post(url, {"params": {"catalogId": param}}).then(function (res) {
+    return res.body
+  })
 }
 
 export function fetchArticle (param) {

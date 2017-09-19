@@ -1,6 +1,7 @@
 import {
   fetchCatalog,
-  fetchArticle
+  fetchArticle,
+  fetchArticleList
 } from '../api'
 
 export default {
@@ -16,8 +17,11 @@ export default {
       var article = res.data
       commit('SET_ARTICLE',article)
     }) 
-      
-
-    
+  },
+  FETCH_ARTICLELIST: ({ commit, state }, param) =>{
+    fetchArticleList(param).then(function (res) {
+      var article = res.data
+      commit('SET_ARTICLE',article)
+    }) 
   }
 }

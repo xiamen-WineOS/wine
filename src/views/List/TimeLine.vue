@@ -5,29 +5,44 @@
   </header>
   <div class="timeline">
     <ul>
-      <li class="clearfix">
+      <li class="clearfix" v-for="(item, index) in articleList">
         <div class="timeline-img"></div>
-  
         <div class="timeline-content">
-          <h2>html5时间表 1</h2>
-          <p>jQuery 团队在官博中再次提醒用户，jQuery 2.0 不再支持IE 6/7/8 了，但是 jQuery 1.9 会继续支持。因为旧版 IE 浏览器在整个互联网中还有很大部分市场，所以他们非常期望大部分网站能继续使用 jQuery 1.x 一段时间。jQuery 团队也将同时支持 jQuery 1.x 和 2.x 。1.9 和 2.0 版的 API 是相同的，所以不必因为你们网站还在用 jQuery 1.9，就感觉好像错过了什么，或者是落后了。</p>
-          <span class="date">Jan 14</span>
+          <h2>{{item.title}}</h2>
+          <div v-html="item.content">
+          	
+          </div>
+          <span class="date">{{item.publishTime}}</span>
         </div> 
-      </li>
-      <li class="clearfix">
-        <div class="timeline-img">
-        </div>
-  
-        <div class="timeline-content">
-          <h2>html5时间表 1</h2>
-          <p>jQuery 团队在官博中再次提醒用户，jQuery 2.0 不再支持IE 6/7/8 了，但是 jQuery 1.9 会继续支持。因为旧版 IE 浏览器在整个互联网中还有很大部分市场，所以他们非常期望大部分网站能继续使用 jQuery 1.x 一段时间。jQuery 团队也将同时支持 jQuery 1.x 和 2.x 。1.9 和 2.0 版的 API 是相同的，所以不必因为你们网站还在用 jQuery 1.9，就感觉好像错过了什么，或者是落后了。</p>
-          <span class="date">Jan 14</span>
-        </div>
       </li>
     </ul>
   </div>
   </section>
 </template>
+<script>
+  import { fetchArticleList } from '../../api'
+  export default {
+    data () {
+      return {
+        articleList: []
+      }
+    },
+    created () {
+      this.getArticleList()
+    },
+    methods: {
+      getArticleList () {
+        var params = parseInt(this.$route.params.id)
+        fetchArticleList(params).then((res) => {
+          console.log(2222222222, res.data.content)
+          this.articleList = res.data.content
+        })
+      }
+    },
+    mounted () {
+    }
+  }
+</script>
 <style>
 @import 'css/variable.css';
   .timeline{

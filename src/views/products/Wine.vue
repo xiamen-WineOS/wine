@@ -4,61 +4,18 @@
       <h2 class="margin-t">习酒</h2>
     </header>
     <div class="row inner small-up-1 medium-up-3 large-up-3 inner-list">
-      <div class="column">
+      <div class="column" v-for="(item, index) in articleList">
         <div class="img">
           <a>
-            <img src="../../assets/img/w1.jpg" alt=""/>
-            <p>张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
+            <picture>
+              <source :srcset="item.smallImageUrl" media="(min-width: 600px)"> 
+              <img :src="item.bigImageUrl" :alt="item.name"/>
+            </picture>
+            <p>{{item.description}}</p>
           </a>
         </div>
-        <div class="name"><a>张德芹</a></div>
+        <div class="name"><a>{{item.name}}</a></div>
       </div>
-      <div class="column">
-        <div class="img">
-          <a>
-            <img src="../../assets/img/w1.jpg" alt=""/>
-            <p>张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </a>
-        </div>
-        <div class="name"><a>张德芹</a></div>
-      </div>
-      <div class="column">
-        <div class="img">
-          <a>
-            <img src="../../assets/img/w1.jpg" alt=""/>
-            <p>张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </a>
-        </div>
-        <div class="name"><a>张德芹</a></div>
-      </div>
-      <div class="column">
-        <div class="img">
-          <a>
-            <img src="../../assets/img/w1.jpg" alt=""/>
-            <p>张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </a>
-        </div>
-        <div class="name"><a>张德芹</a></div>
-      </div>
-      <div class="column">
-        <div class="img">
-          <a>
-            <img src="../../assets/img/w1.jpg" alt=""/>
-            <p>张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </a>
-        </div>
-        <div class="name"><a>张德芹</a></div>
-      </div>
-      <div class="column">
-        <div class="img">
-          <a>
-            <img src="../../assets/img/w1.jpg" alt=""/>
-            <p>张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </a>
-        </div>
-        <div class="name"><a>张德芹</a></div>
-      </div>
-    
     </div>
     <div class="row margin-t text-center">
       <el-pagination
@@ -69,6 +26,33 @@
     </div>
   </section>
 </template>
+<script>
+  import { fetchArticleList } from '../../api'
+  export default {
+    data () {
+      return {
+        articleList: []
+      }
+    },
+    created () {
+      this.getArticleList()
+    },
+    methods: {
+      getArticleList () {
+        var params = parseInt(this.$route.params.id)
+        fetchArticleList(params).then((res) => {
+          console.log(2222222222, res.data.content)
+          this.articleList = res.data.content
+        })
+      }
+    },
+    watch: {
+      $route (nv) {
+        this.getArticleList()
+      }
+    }
+  }
+</script>
 <style>
   @import 'css/variable.css';
   .inner-list {

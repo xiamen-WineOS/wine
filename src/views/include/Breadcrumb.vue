@@ -5,7 +5,7 @@
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item :to="{ path: $route.path}">{{parentName}}</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/' }">{{subName}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{subName}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
   </div>

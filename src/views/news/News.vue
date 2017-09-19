@@ -5,7 +5,7 @@
     </header>
     <div class="row inner">
       <div class="large-24 columns">
-        <div class="media-object newslist">
+        <div class="media-object newslist" v-for="(item, index) in articleList">
           <div class="media-object-section shrink">
             <div class="img">
               <img src="../../assets/img/t1.jpg" alt="李华"/>
@@ -17,67 +17,6 @@
             <p class="white-space3">张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
           </div>
         </div>
-        <div class="media-object newslist">
-          <div class="media-object-section shrink">
-            <div class="img">
-              <img src="../../assets/img/t1.jpg" alt="李华"/>
-            </div>
-          </div>
-          <div class="media-object-section">
-            <h3><a>贵州茅台酒厂（集团）习酒有限责任公司董事长-张德芹</a></h3>
-            <div>2017-06-24</div>
-            <p class="white-space3">张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </div>
-        </div>
-        <div class="media-object newslist">
-          <div class="media-object-section shrink">
-            <div class="img">
-              <img src="../../assets/img/t1.jpg" alt="李华"/>
-            </div>
-          </div>
-          <div class="media-object-section">
-            <h3><a>贵州茅台酒厂（集团）习酒有限责任公司董事长-张德芹</a></h3>
-            <div>2017-06-24</div>
-            <p class="white-space3">张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </div>
-        </div>
-        <div class="media-object newslist">
-          <div class="media-object-section shrink">
-            <div class="img">
-              <img src="../../assets/img/t1.jpg" alt="李华"/>
-            </div>
-          </div>
-          <div class="media-object-section">
-            <h3><a>贵州茅台酒厂（集团）习酒有限责任公司董事长-张德芹</a></h3>
-            <div>2017-06-24</div>
-            <p class="white-space3">张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </div>
-        </div>
-        <div class="media-object newslist">
-          <div class="media-object-section shrink">
-            <div class="img">
-              <img src="../../assets/img/t1.jpg" alt="李华"/>
-            </div>
-          </div>
-          <div class="media-object-section">
-            <h3><a>贵州茅台酒厂（集团）习酒有限责任公司董事长-张德芹</a></h3>
-            <div>2017-06-24</div>
-            <p class="white-space3">张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </div>
-        </div>
-        <div class="media-object newslist">
-          <div class="media-object-section shrink">
-            <div class="img">
-              <img src="../../assets/img/t1.jpg" alt="李华"/>
-            </div>
-          </div>
-          <div class="media-object-section">
-            <h3><a>贵州茅台酒厂（集团）习酒有限责任公司董事长-张德芹</a></h3>
-            <div>2017-06-24</div>
-            <p class="white-space3">张德芹，1973年出生，贵州仁怀市人，中国贵州茅台酒厂有限责任公司党委委员、副总经理，贵州茅台酒厂(集团)习酒有限责任公司党委书记、董事长(法定代表人)，全国青年委员，贵州省人大...</p>
-          </div>
-        </div>
-        
       </div>
     </div>
     
@@ -90,6 +29,30 @@
     </div>
   </section>
 </template>
+<script>
+import { fetchArticleList } from '../../api'
+export default {
+  data () {
+    return {
+      articleList: []
+    }
+  },
+  created () {
+    this.getArticleList()
+  },
+  methods: {
+    getArticleList () {
+      var params = parseInt(this.$route.params.id)
+      fetchArticleList(params).then((res) => {
+        console.log(2222222222, res.data.content)
+        this.articleList = res.data.content
+      })
+    }
+  },
+  mounted () {
+  }
+}
+</script>
 <style>
   @import 'css/variable.css';
   .newslist {
