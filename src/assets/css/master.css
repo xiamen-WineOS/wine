@@ -11,6 +11,9 @@ body{
   background-attachment: var(--background-attachment);
   background-size: cover;
 }
+.main{
+  min-height: calc(100vh - 164px);
+}
 ul,ol,dd{margin: 0;padding: 0;}
 dl, ol, ul, p {
     margin:0 0 1rem 0;
@@ -38,6 +41,9 @@ img {
 .text-right{text-align: right;}
 .text-center{
   text-align: center;
+}
+.no-border{
+  border:none !important;
 }
 /*logo*/
 .logo a{

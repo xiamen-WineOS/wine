@@ -54,8 +54,8 @@ export default new Router({
       name: 'product',
       component: ProductList
     }, {
-      path: '/contact/feedbook/:parentId/:id',
-      name: 'feedbook',
+      path: '/contact/FeedBook/:parentId/:id',
+      name: 'feedBook',
       component: FeedBook
     }, {
       path: '/contact/Recruitment/:parentId/:id',

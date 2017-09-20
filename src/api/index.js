@@ -11,7 +11,6 @@ const Api = {
 
 export function fetchArticleList (param) {
   var url = Api.articleList
-  
   return Vue.http.post(url, {"params": {"catalogId": param}}).then(function (res) {
     return res.body
   })

@@ -3,24 +3,25 @@
   	<header>
       <h2 class="margin-t">资质荣誉</h2>
     </header>
+    <!--<picture>
+      <source :srcset="item.smallImageUrl" media="(min-width: 600px)"> 
+      <img :src="item.bigImageUrl" :alt="item.name"/>
+    </picture>-->
     <div class="row inner small-up-1 medium-up-3 large-up-3">
       <div class="column" v-for="(item, index) in articleList">
         <div class="img">
           <a @click="slideTo(index)">
-            <picture>
-              <source :srcset="item.smallImageUrl" media="(min-width: 600px)"> 
-              <img :src="item.bigImageUrl" :alt="item.name"/>
-            </picture>
+            <img :src="item.articlePageImageUrl ? item.articlePageImageUrl : 'http://39.108.233.181/hebada/images/1.jpg' " alt="item.title"/>
           </a>
         </div>
-        <div class="desc"><a>{{item.name}}</a></div>
+        <div class="desc"><a>{{item.title}}</a></div>
       </div>
     </div>
     <div class="row margin-t text-center">
       <el-pagination
         small
         layout="prev, pager, next"
-        :total="50">
+        :total="data.total">
       </el-pagination>
     </div>
     <div class="dialog">
@@ -45,6 +46,7 @@
   export default {
     data () {
       return {
+        data: Object,
         articleList: [],
         imgPreview: false,
         swiperOption: {
@@ -72,19 +74,21 @@
       this.getArticleList()
     },
     computed: {
-      swiper() {
-        return this.$refs.HonorImg.swiper
+      swiper () {
+        debugger
+        return this.$refs.HonorImg ? this.$refs.HonorImg.swiper : null
       }
     },
     methods: {
       getArticleList () {
         var params = parseInt(this.$route.params.id)
         fetchArticleList(params).then((res) => {
-          console.log(2222222222, res.data.content)
+          this.data = res.data
           this.articleList = res.data.content
         })
       },
       slideTo (index) {
+        debugger
         this.swiper.slideTo(index)
       }
     },
