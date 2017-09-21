@@ -22,3 +22,8 @@ export function dateYMD (date) {
   let d = new Date(date)
   return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
 }
+export function buildUrl (url, params) {
+  return url ? url.replace(/\{\{(\w+)\}\}/g, ($0, $1) => {
+    return params && params.hasOwnProperty($1) ? params[$1] : ''
+  }) : url
+}

@@ -64,7 +64,6 @@ export default {
     dialogVisible (nv) {
       this.articleVisible = nv
       this.currArIndex = this.getIndex()
-      console.log(this.currArIndex)
     },
     arId (nv) {
       this.$store.dispatch('FETCH_ARTICLE', nv)
@@ -253,6 +252,10 @@ export default {
   & img {
     width: 100%;
   }
+}
+.article.el-dialog--small{
+  width:100%;
+  max-width: 800px;
 }
 @media only screen and (max-width: 768px) {
 	.article.el-dialog--small{

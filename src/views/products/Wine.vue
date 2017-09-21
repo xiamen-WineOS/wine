@@ -1,8 +1,6 @@
 <template>
   <section class="team">
-    <header>
-      <h2 class="margin-t">习酒</h2>
-    </header>
+    <sub-header></sub-header>
     <div class="row inner small-up-1 medium-up-3 large-up-3 inner-list">
       <div class="column" v-for="(item, index) in articleList">
         <div class="img">
@@ -27,7 +25,8 @@
   </section>
 </template>
 <script>
-  import { fetchArticleList } from '../../api'
+  import { fetchProductList } from '../../api'
+  import SubHeader from '@/components/SubHeader'
   export default {
     data () {
       return {
@@ -40,7 +39,7 @@
     methods: {
       getArticleList () {
         var params = parseInt(this.$route.params.id)
-        fetchArticleList(params).then((res) => {
+        fetchProductList(params).then((res) => {
           console.log(2222222222, res.data.content)
           this.articleList = res.data.content
         })
@@ -50,6 +49,9 @@
       $route (nv) {
         this.getArticleList()
       }
+    },
+    components: {
+      SubHeader
     }
   }
 </script>
